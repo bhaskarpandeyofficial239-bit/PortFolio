@@ -1,2 +1,17 @@
-# PortFolio
-Personal portfolio website showcasing my journey as a Computer Science Engineering student at JUIT. Highlights my technical skills, projects, achievements, certifications, DSA journey, web development, and robotics work, along with my continuous learning and growth in technology.
+# Bhaskar Pandey — Portfolio
+
+A responsive, single-page personal portfolio built with HTML, CSS, and vanilla JavaScript.
+
+## Run locally
+
+Open `index.html` in a browser, or serve this folder with any static web server.
+
+## Before publishing
+
+- Add a real email address to `contactEmail` in `script.js` to enable direct email links.
+- Add verified project descriptions, repository links, and media as they become available.
+- The `discription` planning note is intentionally not part of the public site.
+
+## Deploy
+
+This is a static site and can be hosted with GitHub Pages. In the repository settings, enable Pages from the `main` branch and the repository root.
