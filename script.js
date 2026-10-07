@@ -29,7 +29,8 @@ const projectDetails = {
     title: 'Vidya Setu',
     kicker: 'LEARNING TECHNOLOGY · PROJECT THEME',
     description: 'A gamified learning platform concept centered on making learning more engaging and accessible. The brief identifies this as a project to showcase; implementation specifics and links still need to be added.',
-    tags: ['Gamified learning', 'Education technology', 'Product concept']
+    tags: ['Gamified learning', 'Education technology', 'Product concept'],
+    url: 'https://bhaskarpandeyofficial239-bit.github.io/VidyaSetu/'
   },
   krishi: {
     title: 'Krishi Setu',
@@ -52,6 +53,9 @@ document.querySelectorAll('[data-project]').forEach((card) => {
     projectDialog.querySelector('[data-dialog-kicker]').textContent = details.kicker;
     projectDialog.querySelector('#dialog-title').textContent = details.title;
     projectDialog.querySelector('.dialog-copy').textContent = details.description;
+    const visitLink = projectDialog.querySelector('[data-visit-link]');
+    visitLink.href = details.url || '#';
+    visitLink.hidden = !details.url;
     const tags = projectDialog.querySelector('.dialog-details');
     tags.replaceChildren(...details.tags.map((tag) => {
       const chip = document.createElement('span');

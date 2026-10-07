@@ -61,6 +61,7 @@ body{background:radial-gradient(ellipse at 88% 5%,#dce5e180,transparent 29%),rad
 .education-strip{background:#e8ebe5}.edu-card{border-color:#c7d0ca}.edu-icon,.edu-arrow,.edu-inner h2{color:#536d66}.edu-label{color:#7a8580}
 .contact-section,.site-footer{background:#202d2d}.contact-section .section-heading,.site-footer{border-color:#465655}.contact-section .eyebrow{color:#c6d2c8}.contact-section .section-index{color:#aab5ae}.contact-inner h2 em{color:#d6d9c6}.contact-bottom p,.footer-inner{color:#c6ceca}.contact-link{border-color:#889993}.contact-link span:last-child{color:#d6d9c6}.contact-link:hover{color:#e3e7d8;border-color:#d6d9c6}
 .project-dialog{background:#f7f7f1f2;border-color:#fff}.dialog-details span{border-color:#ccd5ce;color:#53635c}.dialog-note{color:#78817b}
+.dialog-visit{display:inline-flex;align-items:center;gap:28px;margin-top:20px;padding:13px 17px;border-radius:4px;background:var(--ink);color:var(--paper);font:600 12px var(--sans)}.dialog-visit span{color:var(--lime);font-size:16px}.dialog-visit:hover,.dialog-visit:focus-visible{background:var(--green);outline:2px solid var(--green);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.float-tile{animation:none}}
 
 .art-sun{overflow:hidden}.profile-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center 55%;border-radius:50%}
