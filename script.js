@@ -1,6 +1,20 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.site-nav');
 
+// Add a brief press animation and a short haptic pulse where the browser supports it.
+document.addEventListener('click', (event) => {
+  const control = event.target.closest('a, button');
+  if (!control) return;
+
+  control.classList.remove('click-feedback');
+  // Restart the animation when the same control is clicked again quickly.
+  void control.offsetWidth;
+  control.classList.add('click-feedback');
+  control.addEventListener('animationend', () => control.classList.remove('click-feedback'), { once: true });
+
+  if (typeof navigator.vibrate === 'function') navigator.vibrate(12);
+});
+
 menuButton.addEventListener('click', () => {
   const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
   menuButton.setAttribute('aria-expanded', String(!isOpen));

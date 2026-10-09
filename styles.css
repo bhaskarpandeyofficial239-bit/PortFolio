@@ -64,4 +64,8 @@ body{background:radial-gradient(ellipse at 88% 5%,#dce5e180,transparent 29%),rad
 .dialog-visit{display:inline-flex;align-items:center;gap:28px;margin-top:20px;padding:13px 17px;border-radius:4px;background:var(--ink);color:var(--paper);font:600 12px var(--sans)}.dialog-visit span{color:var(--lime);font-size:16px}.dialog-visit:hover,.dialog-visit:focus-visible{background:var(--green);outline:2px solid var(--green);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.float-tile{animation:none}}
 
+/* Quick tactile feedback for links and buttons after activation. */
+.click-feedback{animation:click-feedback .22s ease-out}
+@keyframes click-feedback{35%{transform:scale(.96)}70%{transform:scale(1.015)}}
+
 .art-sun{overflow:hidden}.profile-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center 55%;border-radius:50%}
