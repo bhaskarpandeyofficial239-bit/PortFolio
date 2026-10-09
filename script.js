@@ -48,6 +48,34 @@ if (contactEmail) {
   });
 }
 
+// Submit to a hidden frame so FormSubmit can send its autoresponse without
+// navigating the visitor away from the portfolio page.
+const contactFrame = document.createElement('iframe');
+contactFrame.name = 'contact-submit-frame';
+contactFrame.title = 'Contact form submission';
+contactFrame.hidden = true;
+document.body.append(contactFrame);
+contactForm.target = contactFrame.name;
+
+let contactSubmissionPending = false;
+const contactStatus = document.querySelector('[data-contact-status]');
+const contactSubmitButton = document.querySelector('[data-contact-submit]');
+
+contactForm.addEventListener('submit', () => {
+  if (!contactEmail) return;
+  contactSubmissionPending = true;
+  contactSubmitButton.disabled = true;
+  contactStatus.textContent = 'Sending your message…';
+});
+
+contactFrame.addEventListener('load', () => {
+  if (!contactSubmissionPending) return;
+  contactSubmissionPending = false;
+  contactForm.reset();
+  contactSubmitButton.disabled = false;
+  contactStatus.textContent = 'Thanks! Your message has been sent. A confirmation email is on its way.';
+});
+
 const projectDetails = {
   vidya: {
     title: 'Vidya Setu',
