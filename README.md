@@ -8,7 +8,7 @@ Open `index.html` in a browser, or serve this folder with any static web server.
 
 ## Before publishing
 
-- Add a real email address to `contactEmail` in `script.js` to enable direct email links.
+- Set `contactEmail` in `script.js` to the inbox that should receive contact form submissions. Verify the first activation email from FormSubmit to enable delivery.
 - Add verified project descriptions, repository links, and media as they become available.
 - The `discription` planning note is intentionally not part of the public site.
 
