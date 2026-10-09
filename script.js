@@ -31,7 +31,7 @@ navigation.querySelectorAll('a').forEach((link) => {
 });
 
 // Set this to the inbox that should receive portfolio messages.
-const contactEmail = '';
+const contactEmail = 'bhaskarpandeyofficial239@gmail.com';
 if (contactEmail) {
   document.querySelector('[data-email-link]').href = `mailto:${contactEmail}`;
   document.querySelector('[data-email-label]').textContent = contactEmail;
