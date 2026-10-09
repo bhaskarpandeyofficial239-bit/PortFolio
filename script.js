@@ -40,7 +40,7 @@ if (contactEmail) {
 
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactEmail) {
-  contactForm.action = `https://formsubmit.co/${contactEmail}`;
+  contactForm.action = `https://formsubmit.co/ajax/${contactEmail}`;
 } else {
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -48,32 +48,34 @@ if (contactEmail) {
   });
 }
 
-// Submit to a hidden frame so FormSubmit can send its autoresponse without
-// navigating the visitor away from the portfolio page.
-const contactFrame = document.createElement('iframe');
-contactFrame.name = 'contact-submit-frame';
-contactFrame.title = 'Contact form submission';
-contactFrame.hidden = true;
-document.body.append(contactFrame);
-contactForm.target = contactFrame.name;
-
-let contactSubmissionPending = false;
 const contactStatus = document.querySelector('[data-contact-status]');
 const contactSubmitButton = document.querySelector('[data-contact-submit]');
-
-contactForm.addEventListener('submit', () => {
+contactForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
   if (!contactEmail) return;
-  contactSubmissionPending = true;
   contactSubmitButton.disabled = true;
   contactStatus.textContent = 'Sending your message…';
-});
-
-contactFrame.addEventListener('load', () => {
-  if (!contactSubmissionPending) return;
-  contactSubmissionPending = false;
-  contactForm.reset();
-  contactSubmitButton.disabled = false;
-  contactStatus.textContent = 'Thanks! Your message has been sent. A confirmation email is on its way.';
+  const fields = new FormData(contactForm);
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        email: fields.get('email'),
+        message: fields.get('message'),
+        _subject: 'New portfolio message',
+        _honey: fields.get('_honey')
+      })
+    });
+    const result = await response.json();
+    if (!response.ok || result.success === false) throw new Error('Message could not be sent.');
+    contactForm.reset();
+    contactStatus.textContent = 'Thanks! Your message has been sent.';
+  } catch (error) {
+    contactStatus.textContent = 'Sorry, the message could not be sent. Please try the email link instead.';
+  } finally {
+    contactSubmitButton.disabled = false;
+  }
 });
 
 const projectDetails = {
