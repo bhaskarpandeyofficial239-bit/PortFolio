@@ -86,5 +86,21 @@ body{background:radial-gradient(ellipse at 88% 5%,#dce5e180,transparent 29%),rad
 .contact-status{margin:0;font-size:11px;line-height:1.6;color:#aab5ae}
 .contact-form+.email-hint{margin-top:18px}
 @media(max-width:620px){.contact-email{justify-content:space-between}.contact-form{margin:34px 0 0}.contact-submit-row{align-items:flex-start;flex-direction:column;gap:12px}}
+.social-links{display:flex;gap:24px;max-width:720px;margin:34px 0 0 auto}
+.social-links a{display:inline-flex;align-items:center;gap:9px;padding-bottom:7px;border-bottom:1px solid #53645f;color:#c6d2c8;font:11px var(--mono);transition:color .2s,border-color .2s}
+.social-links a:hover{color:#e3e7d8;border-color:#d6d9c6}
+.social-links span{color:#d6d9c6}
+@media(max-width:620px){.social-links{margin:28px 0 0;gap:20px}}
+@media(min-width:621px) and (max-width:850px){.site-header{padding-inline:24px}.site-nav{gap:15px;font-size:10px}.nav-contact{padding:9px 11px}}
+.nav-social{display:inline-flex;align-items:center;gap:6px}
+.social-icon{width:15px;height:15px;flex:none;fill:currentColor}
+.social-links .social-icon{width:16px;height:16px}
+.nav-phone{color:#596057}
+.contact-methods{display:grid;gap:17px;justify-items:start}
+.contact-phone{display:grid;gap:6px;color:#c6d2c8;font:11px var(--mono)}
+.contact-phone-label{display:inline-flex;align-items:center;gap:7px}
+.contact-phone strong{font:500 15px var(--display);color:#f4f1e9;letter-spacing:.2px}
+.contact-phone:hover strong{color:#d6d9c6}
+@media(max-width:620px){.contact-methods{gap:14px}}
 
 .art-sun{overflow:hidden}.profile-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center 55%;border-radius:50%}

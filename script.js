@@ -39,40 +39,14 @@ if (contactEmail) {
 }
 
 const contactForm = document.querySelector('[data-contact-form]');
-contactForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const status = document.querySelector('[data-contact-status]');
-  const submitButton = document.querySelector('[data-contact-submit]');
-  const fields = new FormData(contactForm);
-
-  if (fields.get('_honey')) return;
-  if (!contactEmail) {
-    status.textContent = 'This form is not connected yet. Please use the email link, or check back soon.';
-    return;
-  }
-
-  submitButton.disabled = true;
-  status.textContent = 'Sending your message…';
-  try {
-    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(contactEmail)}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        email: fields.get('email'),
-        message: fields.get('message'),
-        _subject: 'New portfolio message'
-      })
-    });
-    const result = await response.json();
-    if (!response.ok || result.success === false) throw new Error('Message could not be sent.');
-    contactForm.reset();
-    status.textContent = 'Thanks! Your message has been sent.';
-  } catch (error) {
-    status.textContent = 'Sorry, the message could not be sent. Please try the email link instead.';
-  } finally {
-    submitButton.disabled = false;
-  }
-});
+if (contactEmail) {
+  contactForm.action = `https://formsubmit.co/${contactEmail}`;
+} else {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    document.querySelector('[data-contact-status]').textContent = 'This form is not connected yet. Please use the email link, or check back soon.';
+  });
+}
 
 const projectDetails = {
   vidya: {
